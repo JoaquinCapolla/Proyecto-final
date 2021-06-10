@@ -13,6 +13,8 @@ namespace Proyecto_final
     {
         static List<Agenda> agenda = new List<Agenda>();
         static List<Citas> citas = new List<Citas>();
+        static List<Sintomas> sintomas = new List<Sintomas>();
+        static List<Histo> histo= new List<Histo>();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -83,6 +85,22 @@ namespace Proyecto_final
             mostrarcitas();
             GuardarCitas();
             GuardarAgenda();
+        }
+
+        protected void btn_guardarsintoma_Click(object sender, EventArgs e)
+        {
+            Sintoma sintomatemp = new Sintoma();
+            sintomatemp.Codigo_sintoma =
+        }
+
+        protected void btn_guardarreceta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_guardarconsulta_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

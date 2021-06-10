@@ -21,21 +21,21 @@ namespace Proyecto_final
     public class Histo
     {
         string diagnostico;
-        string receta;
         DateTime proxima_visita;
         string costo_consulta;
+        List<Tratamiento> tratamiento = new List<Tratamiento>();
         List<Sintomas> sintomas = new List<Sintomas>();
 
         public string Diagnostico { get => diagnostico; set => diagnostico = value; }
-        public string Receta { get => receta; set => receta = value; }
         public DateTime Proxima_visita { get => proxima_visita; set => proxima_visita = value; }
         public string Costo_consulta { get => costo_consulta; set => costo_consulta = value; }
+        public List<Tratamiento> Tratamiento { get => tratamiento; set => tratamiento = value; }
         public List<Sintomas> Sintomas { get => sintomas; set => sintomas = value; }
         public Histo()
         {
+            Tratamiento = new List<Tratamiento>();
             Sintomas = new List<Sintomas>();
         }
-
     }
 
     public class Historial

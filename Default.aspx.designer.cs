@@ -366,13 +366,13 @@ namespace Proyecto_final
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
 
         /// <summary>
-        /// Control Button1.
+        /// Control btn_guardarsintoma.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btn_guardarsintoma;
 
         /// <summary>
         /// Control Label16.
@@ -420,13 +420,13 @@ namespace Proyecto_final
         protected global::System.Web.UI.WebControls.TextBox txt_receta;
 
         /// <summary>
-        /// Control Button2.
+        /// Control btn_guardarreceta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btn_guardarreceta;
 
         /// <summary>
         /// Control Label19.
@@ -463,5 +463,14 @@ namespace Proyecto_final
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_consulta;
+
+        /// <summary>
+        /// Control btn_guardarconsulta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_guardarconsulta;
     }
 }

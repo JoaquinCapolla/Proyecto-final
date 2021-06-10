@@ -73,7 +73,7 @@
                         <br />
                         <asp:Label ID="Label15" runat="server" Text="Sintomas"></asp:Label>
                         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                        <asp:Button ID="Button1" runat="server" Text="Guardar sintoma" />
+                        <asp:Button ID="btn_guardarsintoma" runat="server" OnClick="btn_guardarsintoma_Click" Text="Guardar sintoma" />
                         <br />
                         <asp:Label ID="Label16" runat="server" Text="Diagnostico"></asp:Label>
                         <br />
@@ -82,7 +82,7 @@
                         <br />
                         <asp:Label ID="Label18" runat="server" Text="Receta"></asp:Label>
                         <asp:TextBox ID="txt_receta" runat="server"></asp:TextBox>
-                        <asp:Button ID="Button2" runat="server" Text="Agregar Receta" />
+                        <asp:Button ID="btn_guardarreceta" runat="server" OnClick="btn_guardarreceta_Click" Text="Agregar Receta" />
                         <br />
                         <asp:Label ID="Label19" runat="server" Text="Proxima Visita"></asp:Label>
                         <asp:TextBox ID="txt_proximavisita" runat="server"></asp:TextBox>
@@ -90,6 +90,7 @@
                         <asp:Label ID="Label20" runat="server" Text="Costo de consulta"></asp:Label>
                         <asp:TextBox ID="txt_consulta" runat="server"></asp:TextBox>
                         <br />
+                        <asp:Button ID="btn_guardarconsulta" runat="server" OnClick="btn_guardarconsulta_Click" Text="Guardar consulta" />
                         <br />
                     </ContentTemplate>
                 </asp:UpdatePanel>
