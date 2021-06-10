@@ -9,12 +9,12 @@ namespace Proyecto_final
     {
         string nit_paciente;
         DateTime fecha;
-        DateTime hora_inicio;
-        DateTime hora_fin;
+        string hora_inicio;
+        string hora_fin;
 
         public string Nit_paciente { get => nit_paciente; set => nit_paciente = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
-        public DateTime Hora_inicio { get => hora_inicio; set => hora_inicio = value; }
-        public DateTime Hora_fin { get => hora_fin; set => hora_fin = value; }
+        public string Hora_inicio { get => hora_inicio; set => hora_inicio = value; }
+        public string Hora_fin { get => hora_fin; set => hora_fin = value; }
     }
 }

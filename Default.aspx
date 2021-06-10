@@ -15,7 +15,7 @@
                         <asp:TextBox ID="txt_nit" runat="server"></asp:TextBox>
                         <br />
                         <asp:Label ID="Label3" runat="server" Text="Fecha de cita"></asp:Label>
-                        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                        <asp:Calendar ID="mont_fecha" runat="server"></asp:Calendar>
                         <br />
                         <asp:Label ID="Label4" runat="server" Text="Hora de inicio"></asp:Label>
                         <asp:TextBox ID="txt_inicio" runat="server"></asp:TextBox>
@@ -25,13 +25,14 @@
                         <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                         </asp:GridView>
                         <br />
-                        <asp:Button ID="btn_agregarcita" runat="server" Text="Agregar" />
+                        <asp:Button ID="btn_agregarcita" runat="server" OnClick="btn_agregarcita_Click" Text="Agregar" />
                         <br />
                         <asp:Button ID="btn_asistencia" runat="server" Text="Asistencia a cita" />
                         <asp:Button ID="Button1" runat="server" Text="Cancelar cita" />
                         <br />
                     </ContentTemplate>
                 </asp:UpdatePanel>
+                <br />
             </asp:Panel>
         </div>
     </div>
