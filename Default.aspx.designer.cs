@@ -24,6 +24,42 @@ namespace Proyecto_final
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
+        /// Control Panel5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel5;
+
+        /// <summary>
+        /// Control Label29.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label29;
+
+        /// <summary>
+        /// Control btn_administrativo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_administrativo;
+
+        /// <summary>
+        /// Control btn_medico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_medico;
+
+        /// <summary>
         /// Control Panel2.
         /// </summary>
         /// <remarks>
@@ -249,13 +285,13 @@ namespace Proyecto_final
         protected global::System.Web.UI.WebControls.Label Label10;
 
         /// <summary>
-        /// Control txt_fechanaci.
+        /// Control calfechanaci.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_fechanaci;
+        protected global::System.Web.UI.WebControls.Calendar calfechanaci;
 
         /// <summary>
         /// Control Label11.
@@ -582,13 +618,13 @@ namespace Proyecto_final
         protected global::System.Web.UI.WebControls.Label Label27;
 
         /// <summary>
-        /// Control txt_fechanaci1.
+        /// Control calfechanaci1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_fechanaci1;
+        protected global::System.Web.UI.WebControls.Calendar calfechanaci1;
 
         /// <summary>
         /// Control Label28.
@@ -607,5 +643,14 @@ namespace Proyecto_final
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_telefono1;
+
+        /// <summary>
+        /// Control btn_guardarpaciente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_guardarpaciente;
     }
 }

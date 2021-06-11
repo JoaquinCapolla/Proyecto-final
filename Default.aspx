@@ -5,8 +5,16 @@
     <div class="row">
         <div class="col-md-4">
             <asp:Panel ID="Panel1" runat="server">
-                <asp:Panel ID="Panel2" runat="server">
-                    <asp:Label ID="Label1" runat="server" Text="Agregar una cita"></asp:Label>
+                <br />
+                <asp:Panel ID="Panel5" runat="server">
+                    <asp:Label ID="Label29" runat="server" BorderStyle="None" Font-Size="X-Large" Text="Ingrese a un modulo"></asp:Label>
+                    <br />
+                    <asp:Button ID="btn_administrativo" runat="server" OnClick="btn_administrativo_Click" Text="Modulo administrativo" />
+                    <asp:Button ID="btn_medico" runat="server" OnClick="btn_medico_Click" Text="Modulo medico" />
+                </asp:Panel>
+                <br />
+                <asp:Panel ID="Panel2" runat="server" style="margin-right: 0px">
+                    <asp:Label ID="Label1" runat="server" Text="Agregar una cita" Font-Size="X-Large" ForeColor="Red"></asp:Label>
                     <br />
                     <asp:Label ID="Label2" runat="server" Text="Nit de paciente"></asp:Label>
                     <asp:TextBox ID="txt_nit" runat="server"></asp:TextBox>
@@ -30,8 +38,9 @@
                     <asp:Button ID="btn_asistencia" runat="server" OnClick="btn_asistencia_Click" Text="Asistencia a cita" />
                     <asp:Button ID="btn_cancelarcita" runat="server" OnClick="btn_cancelarcita_Click" Text="Cancelar cita" />
                 </asp:Panel>
+                <br />
                 <asp:Panel ID="Panel3" runat="server">
-                    <asp:Label ID="Label21" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label21" runat="server" Text="Consulta medica" Font-Size="X-Large" ForeColor="Red"></asp:Label>
                     <br />
                     <asp:Label ID="Label6" runat="server" Text="Nit del paciente"></asp:Label>
                     <asp:TextBox ID="txt_nitmed" runat="server"></asp:TextBox>
@@ -46,7 +55,7 @@
                     <asp:TextBox ID="txt_direccion" runat="server"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label10" runat="server" Text="Fecha de nacimiento"></asp:Label>
-                    <asp:TextBox ID="txt_fechanaci" runat="server"></asp:TextBox>
+                    <asp:Calendar ID="calfechanaci" runat="server"></asp:Calendar>
                     <br />
                     <asp:Label ID="Label11" runat="server" Text="Telefono"></asp:Label>
                     <asp:TextBox ID="txt_telefono" runat="server"></asp:TextBox>
@@ -94,8 +103,9 @@
                     <br />
                     <asp:Button ID="btn_guardarconsulta" runat="server" OnClick="btn_guardarconsulta_Click1" Text="Guardar consulta" />
                 </asp:Panel>
+                <br />
                 <asp:Panel ID="Panel4" runat="server">
-                    <asp:Label ID="Label22" runat="server" Text="Agregar pacientes"></asp:Label>
+                    <asp:Label ID="Label22" runat="server" Text="Agregar pacientes" Font-Size="X-Large" ForeColor="Red"></asp:Label>
                     <br />
                     <asp:Label ID="Label23" runat="server" Text="Nit del paciente"></asp:Label>
                     <asp:TextBox ID="txt_nitpaciente" runat="server"></asp:TextBox>
@@ -110,10 +120,14 @@
                     <asp:TextBox ID="txt_direccion1" runat="server"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label27" runat="server" Text="Fecha de nacimiento"></asp:Label>
-                    <asp:TextBox ID="txt_fechanaci1" runat="server"></asp:TextBox>
+                    <asp:Calendar ID="calfechanaci1" runat="server"></asp:Calendar>
                     <br />
                     <asp:Label ID="Label28" runat="server" Text="Telefono"></asp:Label>
                     <asp:TextBox ID="txt_telefono1" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:Button ID="btn_guardarpaciente" runat="server" OnClick="btn_guardarpaciente_Click" Text="Guardar" />
+                    <br />
+                    <br />
                 </asp:Panel>
                 <br />
             </asp:Panel>

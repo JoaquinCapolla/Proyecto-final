@@ -113,7 +113,9 @@ namespace Proyecto_final
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Panel2.Visible = false;
             Panel3.Visible = false;
+            Panel4.Visible = false;
             Cargaragenda();
             Cargarcitas();
             Cargarhistorial();
@@ -184,13 +186,12 @@ namespace Proyecto_final
                     txt_nombre.Text = pacientes[posi].Nombre;
                     txt_apellido.Text = pacientes[posi].Apellido;
                     txt_direccion.Text = pacientes[posi].Direccion;
-                    txt_fechanaci.Text = pacientes[posi].Fecha_nacimiento;
                     txt_telefono.Text = pacientes[posi].Telefono;
                     txt_nitmed.Enabled = false;
                     txt_nombre.Enabled = false;
                     txt_apellido.Enabled = false;
                     txt_direccion.Enabled = false;
-                    txt_fechanaci.Enabled = false;
+                    calfechanaci.Enabled = false;
                     txt_telefono.Enabled = false;
                     break;
                 }
@@ -236,6 +237,23 @@ namespace Proyecto_final
         protected void btn_guardarreceta_Click1(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btn_administrativo_Click(object sender, EventArgs e)
+        {
+            Panel4.Visible = true;
+            Panel2.Visible = false;
+        }
+
+        protected void btn_medico_Click(object sender, EventArgs e)
+        {
+            Panel2.Visible = true;
+            Panel4.Visible = false;
+        }
+
+        protected void btn_guardarpaciente_Click(object sender, EventArgs e)
+        {
+            pacientes
         }
     }
 }

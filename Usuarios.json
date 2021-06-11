@@ -1,12 +1,12 @@
 [
   {
-    "Nombre": "Joaquin",
-    "Contraseña": "$2a$11$PiyTSlgx/f.wSJK/d/rHb.TGdeQdRsjOr55vz1MeGPVwMDqJIe4nC",
-    "Nivel": "2"
+    "Usuario": "Joaquin",
+    "Contrasena": "$2a$11$PiyTSlgx/f.wSJK/d/rHb.TGdeQdRsjOr55vz1MeGPVwMDqJIe4nC",
+    "Nivel": 1
   },
   {
-    "Nombre": "Valeska",
-    "Contraseña": "$2a$11$GVGwzHQ0j9trtCvXvU9wVelpcbWYrJAZ5vRHt5HbGH9CTQFHLMvRy",
-    "Nivel": "1"
+    "Usuario": "Valeska",
+    "Contrasena": "$2a$11$GVGwzHQ0j9trtCvXvU9wVelpcbWYrJAZ5vRHt5HbGH9CTQFHLMvRy",
+    "Nivel": 1
   }
 ]

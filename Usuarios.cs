@@ -8,11 +8,11 @@ namespace Proyecto_final
     public class Usuarios
     {
         string usuario;
-        string contraseña;
+        string contrasena;
         int nivel;
 
         public string Usuario { get => usuario; set => usuario = value; }
-        public string Contraseña { get => contraseña; set => contraseña = value; }
+        public string Contrasena { get => contrasena; set => contrasena = value; }
         public int Nivel { get => nivel; set => nivel = value; }
     }
 }

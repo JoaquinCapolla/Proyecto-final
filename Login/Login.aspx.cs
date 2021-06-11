@@ -29,9 +29,10 @@ namespace Proyecto_final.Login
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
             Usuarios userTemp = new Usuarios();
+           
             userTemp = usuarios.Find(u => u.Usuario == Login1.UserName);
 
-            bool esPasswordValido = BC.Verify(Login1.Password, userTemp.Contraseña);
+            bool esPasswordValido = BC.Verify(Login1.Password, userTemp.Contrasena);
 
             if (/*esPasswordValido*/userTemp != null)
             {
