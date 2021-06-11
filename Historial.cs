@@ -7,7 +7,9 @@ namespace Proyecto_final
 {
     public class Sintomas
     {
+        string codigosintoma;
         string sintoma;
+        public string Codigosintoma { get => codigosintoma; set => codigosintoma = value; }
         public string Sintoma { get => sintoma; set => sintoma = value; }
     }
     public class Tratamiento
