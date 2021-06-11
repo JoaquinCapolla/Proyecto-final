@@ -60,11 +60,10 @@
                     <asp:Label ID="Label11" runat="server" Text="Telefono"></asp:Label>
                     <asp:TextBox ID="txt_telefono" runat="server"></asp:TextBox>
                     <br />
-                    <br />
                     <asp:Panel ID="Panel6" runat="server">
                         <br />
                         <asp:Label ID="lbl_historial" runat="server" Text="Historial "></asp:Label>
-                        <asp:GridView ID="Gridviewhistorial" runat="server">
+                        <asp:GridView ID="Gridviewhistorial" runat="server" OnSelectedIndexChanged="Gridviewhistorial_SelectedIndexChanged">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                             </Columns>
@@ -74,7 +73,7 @@
                         </asp:GridView>
                     </asp:Panel>
                     <br />
-                    <asp:Label ID="Label12" runat="server" Text="Consulta actual"></asp:Label>
+                    <asp:Label ID="Label12" runat="server" Text="Consulta actual" Font-Size="X-Large" ForeColor="#FF3300"></asp:Label>
                     <br />
                     <asp:Label ID="Label13" runat="server" Text="Temperatura"></asp:Label>
                     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
@@ -82,12 +81,10 @@
                     <asp:Label ID="Label14" runat="server" Text="Presion"></asp:Label>
                     <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                     <br />
-                    <br />
                     <asp:Label ID="Label15" runat="server" Text="Sintomas"></asp:Label>
-                    <asp:GridView ID="gridagregar_sintomas" runat="server">
+                    <asp:GridView ID="listadesintomas" runat="server">
                     </asp:GridView>
                     <asp:Button ID="btn_guardarsintoma" runat="server" OnClick="btn_guardarsintoma_Click" Text="Guardar sintoma" />
-                    <br />
                     <br />
                     <asp:Label ID="Label16" runat="server" Text="Diagnostico"></asp:Label>
                     <br />
@@ -130,6 +127,31 @@
                     <br />
                     <asp:Button ID="btn_guardarpaciente" runat="server" OnClick="btn_guardarpaciente_Click" Text="Guardar" />
                     <br />
+                    <br />
+                </asp:Panel>
+                <br />
+                <br />
+                <asp:Panel ID="Panel7" runat="server">
+                    <asp:Label ID="Label30" runat="server" Font-Size="X-Large" ForeColor="Red" Text="Agregar sintomas"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label32" runat="server" Text="Sintoma"></asp:Label>
+                    <asp:TextBox ID="txt_ingresosintoma" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:Button ID="btn_agregarsintoma" runat="server" OnClick="btn_agregarsintoma_Click" Text="Agregar sintoma" />
+                    <br />
+                </asp:Panel>
+                <br />
+                <br />
+                <asp:Panel ID="Panel8" runat="server">
+                    <asp:Label ID="Label33" runat="server" Font-Size="X-Large" ForeColor="Red" Text="Agregar medicamentos"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label34" runat="server" Text="Enfermedades "></asp:Label>
+                    <br />
+                    <asp:Label ID="Label35" runat="server" Text="Codigo del medicamento"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label36" runat="server" Text="Ingrediente generico"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label37" runat="server" Text="Label"></asp:Label>
                     <br />
                 </asp:Panel>
                 <br />

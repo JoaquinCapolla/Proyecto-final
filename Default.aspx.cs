@@ -20,6 +20,7 @@ namespace Proyecto_final
         static List<Pacientes> pacientes = new List<Pacientes>();
         static List<Historial> historial = new List<Historial>();
         static List<Medicamentos> medicamentos = new List<Medicamentos>();
+        static List<Sintomasagregados> sintom= new List<Sintomasagregados>();
         int posi = 0;
         int posihis = 0;
         void Cargaragenda() 
@@ -112,6 +113,24 @@ namespace Proyecto_final
                 }
             }
         }
+        void Cargarsintomasagregados()
+        {
+            string archivo = Server.MapPath("Sintomasagregados.json");
+            if (File.Exists(archivo))
+            {
+                StreamReader jsonStream = File.OpenText(archivo);
+                string json = jsonStream.ReadToEnd();
+                jsonStream.Close();
+                if (string.IsNullOrEmpty(json))
+                {
+
+                }
+                else
+                {
+                    sintom = JsonConvert.DeserializeObject<List<Sintomasagregados>>(json);
+                }
+            }
+        }
         private void GuardarCitas()
         {
             string json = JsonConvert.SerializeObject(citas);
@@ -147,16 +166,40 @@ namespace Proyecto_final
             System.IO.File.WriteAllText(archivo, json);
 
         }
+        private void Guardarsintomasagregados()
+        {
+            string json = JsonConvert.SerializeObject(sintom);
+            string archivo = Server.MapPath("Sintomasagregados.json");
+            System.IO.File.WriteAllText(archivo, json);
+
+        }
+        void mostrarcitas()
+        {
+            Gridviewcitas.DataSource = agenda;
+            Gridviewcitas.DataBind();
+        }
+        void mostrarhistorial()
+        {
+            Gridviewcitas.DataSource = historial;
+            Gridviewcitas.DataBind();
+        }
+        void mostrarsintomas(int x, int y)
+        {
+            Gridviewcitas.DataSource = historial[x].Histo[y].Sintomas;
+            Gridviewcitas.DataBind();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Panel2.Visible = false;
             Panel3.Visible = false;
             Panel4.Visible = false;
+            Panel7.Visible = false;
             Cargaragenda();
             Cargarcitas();
             Cargarhistorial();
             Cargarpacientes();
             Cargarmedicamentos();
+            Cargarsintomasagregados();
             mostrarcitas();
         }
         
@@ -165,11 +208,6 @@ namespace Proyecto_final
 
         }
         
-        void mostrarcitas()
-        {
-            Gridviewcitas.DataSource = agenda;
-            Gridviewcitas.DataBind();
-        }
         protected void btn_agregarcita_Click(object sender, EventArgs e)
         {
             Agenda agendatemp = new Agenda();
@@ -221,6 +259,7 @@ namespace Proyecto_final
                 if (pacientes[posi].Nit_Paciente1.CompareTo(historial[x].Nit_paciente) == 0)
                 {
                     his++;
+                    posihis = x;
                 }
             }
             if(his == 0)
@@ -230,7 +269,7 @@ namespace Proyecto_final
             }
             else
             {
-
+                Panel6.Visible = true;
             }
             if (va == 0)
             {
@@ -279,6 +318,7 @@ namespace Proyecto_final
         {
             Panel4.Visible = true;
             Panel2.Visible = false;
+            Panel7.Visible = true;
         }
 
         protected void btn_medico_Click(object sender, EventArgs e)
@@ -319,6 +359,21 @@ namespace Proyecto_final
             {
                 MessageBox.Show("El paciente ya existe en la base de datos, cambie el nit.");
             }
+        }
+
+        protected void Gridviewhistorial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int indice = Gridviewcitas.SelectedIndex;
+            mostrarsintomas(posihis, indice);
+        }
+
+        protected void btn_agregarsintoma_Click(object sender, EventArgs e)
+        {
+            Sintomasagregados sintomtemp = new Sintomasagregados();
+            sintomtemp.Codigosintoma = Convert.ToString(sintomas.Count+1);
+            sintomtemp.Sintoma = txt_ingresosintoma.Text;
+            sintom.Add(sintomtemp);
+            Guardarsintomasagregados();
         }
     }
 }
