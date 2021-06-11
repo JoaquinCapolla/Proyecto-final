@@ -61,15 +61,18 @@
                     <asp:TextBox ID="txt_telefono" runat="server"></asp:TextBox>
                     <br />
                     <br />
-                    <asp:Label ID="lbl_historial" runat="server" Text="Historial "></asp:Label>
-                    <asp:GridView ID="Gridviewhistorial" runat="server">
-                        <Columns>
-                            <asp:CommandField ShowSelectButton="True" />
-                        </Columns>
-                    </asp:GridView>
-                    <asp:Label ID="lbl_sintomas" runat="server" Text="Sintomas"></asp:Label>
-                    <asp:GridView ID="Gridviewsintomas" runat="server">
-                    </asp:GridView>
+                    <asp:Panel ID="Panel6" runat="server">
+                        <br />
+                        <asp:Label ID="lbl_historial" runat="server" Text="Historial "></asp:Label>
+                        <asp:GridView ID="Gridviewhistorial" runat="server">
+                            <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
+                            </Columns>
+                        </asp:GridView>
+                        <asp:Label ID="lbl_sintomas" runat="server" Text="Sintomas"></asp:Label>
+                        <asp:GridView ID="Gridviewsintomas" runat="server">
+                        </asp:GridView>
+                    </asp:Panel>
                     <br />
                     <asp:Label ID="Label12" runat="server" Text="Consulta actual"></asp:Label>
                     <br />

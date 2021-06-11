@@ -44,7 +44,7 @@ namespace Proyecto_final
     {
         string nit_paciente;
         DateTime fecha_consulta;
-        DateTime hora_consulta;
+        string hora_consulta;
         string temperatura;
         string presion;
 
@@ -52,7 +52,7 @@ namespace Proyecto_final
 
         public string Nit_paciente { get => nit_paciente; set => nit_paciente = value; }
         public DateTime Fecha_consulta { get => fecha_consulta; set => fecha_consulta = value; }
-        public DateTime Hora_consulta { get => hora_consulta; set => hora_consulta = value; }
+        public string Hora_consulta { get => hora_consulta; set => hora_consulta = value; }
         public string Temperatura { get => temperatura; set => temperatura = value; }
         public string Presion { get => presion; set => presion = value; }
         public List<Histo> Histo { get => histo; set => histo = value; }
