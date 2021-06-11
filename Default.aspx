@@ -60,6 +60,8 @@
                     <asp:Label ID="Label11" runat="server" Text="Telefono"></asp:Label>
                     <asp:TextBox ID="txt_telefono" runat="server"></asp:TextBox>
                     <br />
+                    <asp:Button ID="btn_guardar_newusuario" runat="server" OnClick="btn_guardar_newusuario_Click" Text="Guardar nuevo" />
+                    <br />
                     <asp:Panel ID="Panel6" runat="server">
                         <br />
                         <asp:Label ID="lbl_historial" runat="server" Text="Historial "></asp:Label>
@@ -130,14 +132,28 @@
                     <br />
                 </asp:Panel>
                 <br />
-                <br />
                 <asp:Panel ID="Panel7" runat="server">
                     <asp:Label ID="Label30" runat="server" Font-Size="X-Large" ForeColor="Red" Text="Agregar sintomas"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label45" runat="server" Text="Codigo de sintoma"></asp:Label>
+                    <asp:TextBox ID="txt_codsintoma" runat="server"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label32" runat="server" Text="Sintoma"></asp:Label>
                     <asp:TextBox ID="txt_ingresosintoma" runat="server"></asp:TextBox>
                     <br />
                     <asp:Button ID="btn_agregarsintoma" runat="server" OnClick="btn_agregarsintoma_Click" Text="Agregar sintoma" />
+                    <br />
+                    <asp:Label ID="Label44" runat="server" Font-Size="Large" ForeColor="Blue" Text="Editar sintomas"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label46" runat="server" Text="Buscar por codigo"></asp:Label>
+                    <asp:TextBox ID="txt_buscarsintoma" runat="server"></asp:TextBox>
+                    <asp:Button ID="btn_buscarsintoma" runat="server" OnClick="btn_buscarsintoma_Click" Text="Buscar" />
+                    <br />
+                    <asp:Label ID="Label47" runat="server" Text="Sintoma"></asp:Label>
+                    <asp:TextBox ID="txt_editsintoma" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:Button ID="btn_guardarcambiosintoma" runat="server" OnClick="btn_guardarcambiosintoma_Click" Text="Guardar cambios" />
+                    <asp:Button ID="btn_eliminarsintoma" runat="server" OnClick="btn_eliminarsintoma_Click" Text="Eliminar Sintoma" />
                     <br />
                 </asp:Panel>
                 <br />
@@ -146,12 +162,46 @@
                     <asp:Label ID="Label33" runat="server" Font-Size="X-Large" ForeColor="Red" Text="Agregar medicamentos"></asp:Label>
                     <br />
                     <asp:Label ID="Label34" runat="server" Text="Enfermedades "></asp:Label>
+                    <asp:TextBox ID="txt_enfermedades" runat="server"></asp:TextBox>
+                    <asp:Button ID="btn_agregarenfer" runat="server" OnClick="btn_agregarenfer_Click" Text="Agregar" />
                     <br />
                     <asp:Label ID="Label35" runat="server" Text="Codigo del medicamento"></asp:Label>
+                    <asp:TextBox ID="txt_codmedicamentos" runat="server"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label36" runat="server" Text="Ingrediente generico"></asp:Label>
+                    <asp:TextBox ID="txt_ingredientegen" runat="server"></asp:TextBox>
                     <br />
-                    <asp:Label ID="Label37" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label37" runat="server" Text="Laboratorio"></asp:Label>
+                    <asp:TextBox ID="txt_laboratorio" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:Button ID="btn_guardarmed" runat="server" OnClick="btn_guardarmed_Click" Text="Guardar medicamento" />
+                    <br />
+                    <br />
+                    <asp:Label ID="Label43" runat="server" Font-Size="Large" ForeColor="Blue" Text="Editar medicamentos"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label38" runat="server" Text="Buscar por codigo"></asp:Label>
+                    <asp:TextBox ID="txt_codigo" runat="server"></asp:TextBox>
+                    <asp:Button ID="btn_buscarcodigo" runat="server" OnClick="btn_buscarcodigo_Click" Text="Buscar" />
+                    <br />
+                    <asp:Label ID="Label39" runat="server" Text="Enfermedades"></asp:Label>
+                    <asp:TextBox ID="txt_edienfermedades" runat="server"></asp:TextBox>
+                    <asp:Button ID="btn_editarenfermedad" runat="server" OnClick="btn_editarenfermedad_Click" Text="Agregar" />
+                    <asp:GridView ID="grid_editmedicamentos" runat="server">
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="True" />
+                        </Columns>
+                    </asp:GridView>
+                    <asp:Button ID="btn_eliminarenfermedad" runat="server" OnClick="btn_eliminarenfermedad_Click" Text="Eliminar enfermedad" />
+                    <br />
+                    <asp:Label ID="Label41" runat="server" Text="Ingrediente generico"></asp:Label>
+                    <asp:TextBox ID="txt_editingrediente" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:Label ID="Label42" runat="server" Text="Laboratorio"></asp:Label>
+                    <asp:TextBox ID="txt_editlaboratorio" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:Button ID="btn_guardareditarmedi" runat="server" OnClick="btn_guardareditarmedi_Click" Text="Guardar cambios" />
+                    <asp:Button ID="btn_eliminaredit" runat="server" Text="Eliminar medicamentos" />
+                    <br />
                     <br />
                 </asp:Panel>
                 <br />

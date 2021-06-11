@@ -21,8 +21,11 @@ namespace Proyecto_final
         static List<Historial> historial = new List<Historial>();
         static List<Medicamentos> medicamentos = new List<Medicamentos>();
         static List<Sintomasagregados> sintom= new List<Sintomasagregados>();
+        static List<Enfermedades> enfermedades= new List<Enfermedades>();
         int posi = 0;
         int posihis = 0;
+        int editsintomas = 0;
+        int editmedicamentos = 0;
         void Cargaragenda() 
         {
             string archivo = Server.MapPath("Agenda.json");
@@ -185,21 +188,24 @@ namespace Proyecto_final
         }
         void mostrarsintomas(int x, int y)
         {
-            Gridviewcitas.DataSource = historial[x].Histo[y].Sintomas;
-            Gridviewcitas.DataBind();
+            Gridviewsintomas.DataSource = historial[x].Histo[y].Sintomas;
+            Gridviewsintomas.DataBind();
         }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             Panel2.Visible = false;
             Panel3.Visible = false;
             Panel4.Visible = false;
             Panel7.Visible = false;
+            Panel8.Visible = false;
             Cargaragenda();
             Cargarcitas();
             Cargarhistorial();
             Cargarpacientes();
             Cargarmedicamentos();
             Cargarsintomasagregados();
+            Cargarmedicamentos();
             mostrarcitas();
         }
         
@@ -319,6 +325,7 @@ namespace Proyecto_final
             Panel4.Visible = true;
             Panel2.Visible = false;
             Panel7.Visible = true;
+            Panel8.Visible = true;
         }
 
         protected void btn_medico_Click(object sender, EventArgs e)
@@ -370,10 +377,126 @@ namespace Proyecto_final
         protected void btn_agregarsintoma_Click(object sender, EventArgs e)
         {
             Sintomasagregados sintomtemp = new Sintomasagregados();
-            sintomtemp.Codigosintoma = Convert.ToString(sintomas.Count+1);
+            sintomtemp.Codigosintoma = Convert.ToString(sintom.Count+1);
             sintomtemp.Sintoma = txt_ingresosintoma.Text;
             sintom.Add(sintomtemp);
             Guardarsintomasagregados();
+        }
+
+        protected void btn_agregarenfer_Click(object sender, EventArgs e)
+        {
+            Enfermedades enfermedadestemp = new Enfermedades();
+            enfermedadestemp.Enfermedad = txt_enfermedades.Text;
+            enfermedades.Add(enfermedadestemp);
+            txt_enfermedades.Text = "";
+        }
+
+        protected void btn_guardarmed_Click(object sender, EventArgs e)
+        {
+            Medicamentos medicamentostemp = new Medicamentos();
+            medicamentostemp.Codigo_medicamento = txt_codmedicamentos.Text;
+            medicamentostemp.Ingrediente_generico = txt_ingredientegen.Text;
+            medicamentostemp.Laboratorio = txt_laboratorio.Text;
+            medicamentostemp.Enfermedades = enfermedades.ToList();
+            medicamentos.Add(medicamentostemp);
+            Guardarmedicamentos();
+            txt_codmedicamentos.Text = "";
+            txt_ingredientegen.Text = "";
+            txt_laboratorio.Text = "";
+            enfermedades.Clear();
+
+        }
+
+        protected void btn_eliminarsintoma_Click(object sender, EventArgs e)
+        {
+            sintom.RemoveAt(editsintomas);
+            Guardarsintomasagregados();
+            txt_buscarsintoma.Text = "";
+            txt_editsintoma.Text = "";
+            editsintomas = 0;
+        }
+
+        protected void btn_guardarcambiosintoma_Click(object sender, EventArgs e)
+        {
+            sintom[editsintomas].Codigosintoma = txt_buscarsintoma.Text;
+            sintom[editsintomas].Sintoma = txt_editsintoma.Text;
+            Guardarsintomasagregados();
+            txt_buscarsintoma.Text = "";
+            txt_editsintoma.Text = "";
+            editsintomas = 0;
+        }
+
+        protected void btn_buscarsintoma_Click(object sender, EventArgs e)
+        {
+            for(int x = 0; x < sintom.Count; x++)
+            {
+                if (txt_buscarsintoma.Text.CompareTo(sintom[x].Codigosintoma) == 0)
+                {
+                    editsintomas = x;
+                    txt_editsintoma.Text = sintom[x].Sintoma;
+                    break;
+                }
+            }
+        }
+
+        protected void btn_buscarcodigo_Click(object sender, EventArgs e)
+        {
+            for (int x = 0; x < medicamentos.Count; x++)
+            {
+                if (txt_codigo.Text.CompareTo(medicamentos[x].Codigo_medicamento) == 0)
+                {
+                    editmedicamentos = x;
+                    txt_editingrediente.Text = medicamentos[x].Ingrediente_generico;
+                    txt_editlaboratorio.Text = medicamentos[x].Laboratorio;
+                    grid_editmedicamentos.DataSource = medicamentos[x].Enfermedades;
+                    grid_editmedicamentos.DataBind();
+                    break;
+                }
+            }
+        }
+
+        protected void btn_editarenfermedad_Click(object sender, EventArgs e)
+        {
+            Enfermedades enfermedadestemp = new Enfermedades();
+            enfermedadestemp.Enfermedad = txt_edienfermedades.Text;
+            medicamentos[editmedicamentos].Enfermedades.Add(enfermedadestemp);
+            txt_edienfermedades.Text = "";
+            grid_editmedicamentos.DataSource = medicamentos[editmedicamentos].Enfermedades;
+            grid_editmedicamentos.DataBind();
+            Guardarmedicamentos();
+        }
+
+        protected void btn_eliminarenfermedad_Click(object sender, EventArgs e)
+        {
+            int indice = grid_editmedicamentos.SelectedIndex;
+            medicamentos[editmedicamentos].Enfermedades.RemoveAt(indice);
+            grid_editmedicamentos.DataSource = medicamentos[editmedicamentos].Enfermedades;
+            grid_editmedicamentos.DataBind();
+            Guardarmedicamentos();
+        }
+
+        protected void btn_guardareditarmedi_Click(object sender, EventArgs e)
+        {
+            Guardarmedicamentos();
+            txt_codigo.Text = "";
+            txt_edienfermedades.Text = "";
+            medicamentos[editmedicamentos].Ingrediente_generico = txt_editingrediente.Text;
+            medicamentos[editmedicamentos].Laboratorio = txt_editlaboratorio.Text;
+            Guardarmedicamentos();
+            txt_editingrediente.Text = "";
+            txt_editlaboratorio.Text = "";
+        }
+
+        protected void btn_guardar_newusuario_Click(object sender, EventArgs e)
+        {
+            Pacientes pacientestemp = new Pacientes();
+            pacientestemp.Nit_Paciente1 = txt_nitmed.Text;
+            pacientestemp.Nombre = txt_nombre.Text;
+            pacientestemp.Apellido = txt_apellido.Text;
+            pacientestemp.Direccion = txt_apellido.Text;
+            pacientestemp.Fecha_nacimiento1 = calfechanaci.SelectedDate;
+            pacientestemp.Telefono = txt_telefono.Text;
+            pacientes.Add(pacientestemp);
         }
     }
 }
