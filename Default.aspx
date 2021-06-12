@@ -49,7 +49,7 @@
                     <asp:TextBox ID="txt_nombre" runat="server"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label8" runat="server" Text="Apellido"></asp:Label>
-                    <asp:TextBox ID="txt_apellido" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_apellido" runat="server" OnTextChanged="txt_apellido_TextChanged"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label9" runat="server" Text="Direccion"></asp:Label>
                     <asp:TextBox ID="txt_direccion" runat="server"></asp:TextBox>
@@ -71,27 +71,35 @@
                             </Columns>
                         </asp:GridView>
                         <asp:Label ID="lbl_sintomas" runat="server" Text="Sintomas"></asp:Label>
-                        <asp:GridView ID="Gridviewsintomas" runat="server">
+                        <asp:GridView ID="Gridviewsintomas" runat="server" OnSelectedIndexChanged="Gridviewsintomas_SelectedIndexChanged">
                         </asp:GridView>
                     </asp:Panel>
                     <br />
                     <asp:Label ID="Label12" runat="server" Text="Consulta actual" Font-Size="X-Large" ForeColor="#FF3300"></asp:Label>
                     <br />
                     <asp:Label ID="Label13" runat="server" Text="Temperatura"></asp:Label>
-                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_temperatua" runat="server"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label14" runat="server" Text="Presion"></asp:Label>
-                    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_presion" runat="server"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label15" runat="server" Text="Sintomas"></asp:Label>
                     <asp:GridView ID="listadesintomas" runat="server">
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="True" />
+                        </Columns>
                     </asp:GridView>
                     <asp:Button ID="btn_guardarsintoma" runat="server" OnClick="btn_guardarsintoma_Click" Text="Guardar sintoma" />
                     <br />
                     <asp:Label ID="Label16" runat="server" Text="Diagnostico"></asp:Label>
+                    <asp:TextBox ID="txt_diagnostico" runat="server"></asp:TextBox>
                     <br />
                     <asp:Label ID="Label17" runat="server" Text="Tratamiento"></asp:Label>
-                    <asp:TextBox ID="txt_tratamiento" runat="server"></asp:TextBox>
+                    <asp:GridView ID="gridtratamiento" runat="server">
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="True" />
+                        </Columns>
+                    </asp:GridView>
                     <br />
                     <asp:Label ID="Label18" runat="server" Text="Receta"></asp:Label>
                     <asp:TextBox ID="txt_receta" runat="server"></asp:TextBox>
@@ -203,6 +211,18 @@
                     <asp:Button ID="btn_eliminaredit" runat="server" Text="Eliminar medicamentos" />
                     <br />
                     <br />
+                </asp:Panel>
+                <br />
+                <br />
+                <asp:Panel ID="Panel9" runat="server">
+                    <asp:Label ID="Label49" runat="server" Font-Size="X-Large" ForeColor="Red" Text="Buscar historial"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label48" runat="server" Text="Buscar paciente"></asp:Label>
+                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:Button ID="btn_buscarhistorial" runat="server" OnClick="btn_buscarhistorial_Click" Text="Buscar" />
+                    <br />
+                    <asp:GridView ID="GridView1" runat="server">
+                    </asp:GridView>
                 </asp:Panel>
                 <br />
             </asp:Panel>

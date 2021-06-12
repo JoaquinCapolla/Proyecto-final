@@ -148,6 +148,7 @@
     <Content Include="Login\LoginOut.aspx" />
     <Content Include="Medicamentos.json" />
     <Content Include="Pacientes.json" />
+    <Content Include="momentanea.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -228,6 +229,7 @@
       <DependentUpon>LoginOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Medicamentos.cs" />
+    <Compile Include="Momentanea.cs" />
     <Compile Include="Pacientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sintomasagregados.cs" />

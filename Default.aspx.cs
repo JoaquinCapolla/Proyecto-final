@@ -22,10 +22,8 @@ namespace Proyecto_final
         static List<Medicamentos> medicamentos = new List<Medicamentos>();
         static List<Sintomasagregados> sintom= new List<Sintomasagregados>();
         static List<Enfermedades> enfermedades= new List<Enfermedades>();
-        int posi = 0;
-        int posihis = 0;
-        int editsintomas = 0;
-        int editmedicamentos = 0;
+        static List<Cantidad> cantidad = new List<Cantidad>();
+        static List<Momentanea> momentanea = new List<Momentanea>();
         void Cargaragenda() 
         {
             string archivo = Server.MapPath("Agenda.json");
@@ -41,6 +39,24 @@ namespace Proyecto_final
                 else
                 {
                     agenda = JsonConvert.DeserializeObject<List<Agenda>>(json);
+                }
+            }
+        }
+        void Cargarmomentanea()
+        {
+            string archivo = Server.MapPath("momentanea.json");
+            if (File.Exists(archivo))
+            {
+                StreamReader jsonStream = File.OpenText(archivo);
+                string json = jsonStream.ReadToEnd();
+                jsonStream.Close();
+                if (string.IsNullOrEmpty(json))
+                {
+
+                }
+                else
+                {
+                    momentanea = JsonConvert.DeserializeObject<List<Momentanea>>(json);
                 }
             }
         }
@@ -148,6 +164,13 @@ namespace Proyecto_final
             System.IO.File.WriteAllText(archivo, json);
 
         }
+        private void Guardarmomentanea()
+        {
+            string json = JsonConvert.SerializeObject(momentanea);
+            string archivo = Server.MapPath("momentanea.json");
+            System.IO.File.WriteAllText(archivo, json);
+
+        }
         private void Guardarhistorial()
         {
             string json = JsonConvert.SerializeObject(historial);
@@ -186,14 +209,19 @@ namespace Proyecto_final
             Gridviewcitas.DataSource = historial;
             Gridviewcitas.DataBind();
         }
-        void mostrarsintomas(int x, int y)
+        void mostrarsintomasmedico()
         {
-            Gridviewsintomas.DataSource = historial[x].Histo[y].Sintomas;
-            Gridviewsintomas.DataBind();
+            listadesintomas.DataSource = sintom;
+            listadesintomas.DataBind();
         }
-        
+        void mostrartratamientos()
+        {
+            gridtratamiento.DataSource = medicamentos;
+            gridtratamiento.DataBind();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+
             Panel2.Visible = false;
             Panel3.Visible = false;
             Panel4.Visible = false;
@@ -207,6 +235,12 @@ namespace Proyecto_final
             Cargarsintomasagregados();
             Cargarmedicamentos();
             mostrarcitas();
+            mostrarsintomasmedico();
+            mostrartratamientos();
+            if (momentanea.Count < 1)
+            {
+                Cargarmomentanea();
+            }
         }
         
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -235,6 +269,8 @@ namespace Proyecto_final
             citastemp.Hora_inicio = agenda[indice].Hora_inicio;
             citastemp.Hora_fin = agenda[indice].Hora_fin;
             citastemp.Asistencia = 1;
+            momentanea[0].Fechaconsulta1 = agenda[indice].Fecha;
+            momentanea[0].Horadeconsulta = agenda[indice].Hora_inicio;
             citas.Add(citastemp);
             int va= 0;
             for (int x = 0; x < pacientes.Count; x++)
@@ -243,29 +279,31 @@ namespace Proyecto_final
                 {
                     MessageBox.Show("El paciente ya estaba registrado no ingrese datos");
                     va = va+1;
-                    posi = x;
-                    txt_nitmed.Text= pacientes[posi].Nit_Paciente1;
-                    txt_nombre.Text = pacientes[posi].Nombre;
-                    txt_apellido.Text = pacientes[posi].Apellido;
-                    txt_direccion.Text = pacientes[posi].Direccion;
-                    calfechanaci.SelectedDate = pacientes[posi].Fecha_nacimiento1;
-                    txt_telefono.Text = pacientes[posi].Telefono;
+                    momentanea[0].Posi = x;
+                    txt_nitmed.Text= pacientes[momentanea[0].Posi].Nit_Paciente1;
+                    txt_nombre.Text = pacientes[momentanea[0].Posi].Nombre;
+                    txt_apellido.Text = pacientes[momentanea[0].Posi].Apellido;
+                    txt_direccion.Text = pacientes[momentanea[0].Posi].Direccion;
+                    calfechanaci.SelectedDate = pacientes[momentanea[0].Posi].Fecha_nacimiento1;
+                    txt_telefono.Text = pacientes[momentanea[0].Posi].Telefono;
                     txt_nitmed.Enabled = false;
                     txt_nombre.Enabled = false;
                     txt_apellido.Enabled = false;
                     txt_direccion.Enabled = false;
                     calfechanaci.Enabled = false;
                     txt_telefono.Enabled = false;
+                    momentanea[0].Existpaciente = 1;
                     break;
                 }
             }
             int his = 0;
             for (int x = 0; x < historial.Count; x++)
             {
-                if (pacientes[posi].Nit_Paciente1.CompareTo(historial[x].Nit_paciente) == 0)
+                if (pacientes[momentanea[0].Posi].Nit_Paciente1.CompareTo(historial[x].Nit_paciente) == 0)
                 {
                     his++;
-                    posihis = x;
+                    momentanea[0].Posihis = x;
+                    momentanea[0].Existhistorial = 1; 
                 }
             }
             if(his == 0)
@@ -276,6 +314,9 @@ namespace Proyecto_final
             else
             {
                 Panel6.Visible = true;
+                Gridviewhistorial.DataSource = historial[momentanea[0].Posihis].Cantidad[0].Histo;
+                Gridviewhistorial.DataBind();
+
             }
             if (va == 0)
             {
@@ -288,6 +329,9 @@ namespace Proyecto_final
             mostrarcitas();
             GuardarCitas();
             GuardarAgenda();
+            txt_nit.Text = "";
+            txt_inicio.Text = "";
+            txt_final.Text = "";
         }
 
         protected void btn_cancelarcita_Click(object sender, EventArgs e)
@@ -304,20 +348,9 @@ namespace Proyecto_final
             mostrarcitas();
             GuardarCitas();
             GuardarAgenda();
-        }
-        protected void btn_guardarsintoma_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btn_guardarconsulta_Click1(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btn_guardarreceta_Click1(object sender, EventArgs e)
-        {
-
+            txt_nit.Text = "";
+            txt_inicio.Text = "";
+            txt_final.Text = "";
         }
 
         protected void btn_administrativo_Click(object sender, EventArgs e)
@@ -331,6 +364,7 @@ namespace Proyecto_final
         protected void btn_medico_Click(object sender, EventArgs e)
         {
             Panel2.Visible = true;
+            Panel3.Visible = true;
             Panel4.Visible = false;
         }
 
@@ -370,8 +404,9 @@ namespace Proyecto_final
 
         protected void Gridviewhistorial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int indice = Gridviewcitas.SelectedIndex;
-            mostrarsintomas(posihis, indice);
+            int ind = Gridviewhistorial.SelectedIndex;
+            Gridviewsintomas.DataSource = historial[momentanea[0].Posihis].Cantidad[ind];
+            Gridviewsintomas.DataBind();
         }
 
         protected void btn_agregarsintoma_Click(object sender, EventArgs e)
@@ -409,21 +444,21 @@ namespace Proyecto_final
 
         protected void btn_eliminarsintoma_Click(object sender, EventArgs e)
         {
-            sintom.RemoveAt(editsintomas);
+            sintom.RemoveAt(momentanea[0].Editsintomas);
             Guardarsintomasagregados();
             txt_buscarsintoma.Text = "";
             txt_editsintoma.Text = "";
-            editsintomas = 0;
+            momentanea[0].Editsintomas = 0;
         }
 
         protected void btn_guardarcambiosintoma_Click(object sender, EventArgs e)
         {
-            sintom[editsintomas].Codigosintoma = txt_buscarsintoma.Text;
-            sintom[editsintomas].Sintoma = txt_editsintoma.Text;
+            sintom[momentanea[0].Editsintomas].Codigosintoma = txt_buscarsintoma.Text;
+            sintom[momentanea[0].Editsintomas].Sintoma = txt_editsintoma.Text;
             Guardarsintomasagregados();
             txt_buscarsintoma.Text = "";
             txt_editsintoma.Text = "";
-            editsintomas = 0;
+            momentanea[0].Editsintomas = 0;
         }
 
         protected void btn_buscarsintoma_Click(object sender, EventArgs e)
@@ -432,7 +467,7 @@ namespace Proyecto_final
             {
                 if (txt_buscarsintoma.Text.CompareTo(sintom[x].Codigosintoma) == 0)
                 {
-                    editsintomas = x;
+                    momentanea[0].Editsintomas = x;
                     txt_editsintoma.Text = sintom[x].Sintoma;
                     break;
                 }
@@ -445,7 +480,7 @@ namespace Proyecto_final
             {
                 if (txt_codigo.Text.CompareTo(medicamentos[x].Codigo_medicamento) == 0)
                 {
-                    editmedicamentos = x;
+                    momentanea[0].Editmedicamentos = x;
                     txt_editingrediente.Text = medicamentos[x].Ingrediente_generico;
                     txt_editlaboratorio.Text = medicamentos[x].Laboratorio;
                     grid_editmedicamentos.DataSource = medicamentos[x].Enfermedades;
@@ -459,9 +494,9 @@ namespace Proyecto_final
         {
             Enfermedades enfermedadestemp = new Enfermedades();
             enfermedadestemp.Enfermedad = txt_edienfermedades.Text;
-            medicamentos[editmedicamentos].Enfermedades.Add(enfermedadestemp);
+            medicamentos[momentanea[0].Editmedicamentos].Enfermedades.Add(enfermedadestemp);
             txt_edienfermedades.Text = "";
-            grid_editmedicamentos.DataSource = medicamentos[editmedicamentos].Enfermedades;
+            grid_editmedicamentos.DataSource = medicamentos[momentanea[0].Editmedicamentos].Enfermedades;
             grid_editmedicamentos.DataBind();
             Guardarmedicamentos();
         }
@@ -469,8 +504,8 @@ namespace Proyecto_final
         protected void btn_eliminarenfermedad_Click(object sender, EventArgs e)
         {
             int indice = grid_editmedicamentos.SelectedIndex;
-            medicamentos[editmedicamentos].Enfermedades.RemoveAt(indice);
-            grid_editmedicamentos.DataSource = medicamentos[editmedicamentos].Enfermedades;
+            medicamentos[momentanea[0].Editmedicamentos].Enfermedades.RemoveAt(indice);
+            grid_editmedicamentos.DataSource = medicamentos[momentanea[0].Editmedicamentos].Enfermedades;
             grid_editmedicamentos.DataBind();
             Guardarmedicamentos();
         }
@@ -480,8 +515,8 @@ namespace Proyecto_final
             Guardarmedicamentos();
             txt_codigo.Text = "";
             txt_edienfermedades.Text = "";
-            medicamentos[editmedicamentos].Ingrediente_generico = txt_editingrediente.Text;
-            medicamentos[editmedicamentos].Laboratorio = txt_editlaboratorio.Text;
+            medicamentos[momentanea[0].Editmedicamentos].Ingrediente_generico = txt_editingrediente.Text;
+            medicamentos[momentanea[0].Editmedicamentos].Laboratorio = txt_editlaboratorio.Text;
             Guardarmedicamentos();
             txt_editingrediente.Text = "";
             txt_editlaboratorio.Text = "";
@@ -489,14 +524,96 @@ namespace Proyecto_final
 
         protected void btn_guardar_newusuario_Click(object sender, EventArgs e)
         {
-            Pacientes pacientestemp = new Pacientes();
-            pacientestemp.Nit_Paciente1 = txt_nitmed.Text;
-            pacientestemp.Nombre = txt_nombre.Text;
-            pacientestemp.Apellido = txt_apellido.Text;
-            pacientestemp.Direccion = txt_apellido.Text;
-            pacientestemp.Fecha_nacimiento1 = calfechanaci.SelectedDate;
-            pacientestemp.Telefono = txt_telefono.Text;
-            pacientes.Add(pacientestemp);
+            
+        }
+        protected void btn_guardarsintoma_Click(object sender, EventArgs e)
+        {
+            int indice = listadesintomas.SelectedIndex;
+            Sintomas sintomastemp = new Sintomas();
+            sintomastemp.Codigosintoma = sintom[indice].Codigosintoma;
+            sintomastemp.Sintoma = sintom[indice].Sintoma;
+            sintomas.Add(sintomastemp);
+        }
+
+        protected void btn_guardarconsulta_Click1(object sender, EventArgs e)
+        {
+            Histo histotemp = new Histo();
+            Cantidad cantidadtemp = new Cantidad();
+            histotemp.Diagnostico = txt_diagnostico.Text;
+            histotemp.Proxima_visita = txt_proximavisita.Text;
+            histotemp.Costo_consulta = txt_consulta.Text;
+            histotemp.Sintomas = sintomas.ToList();
+            histotemp.Tratamiento = tratamiento.ToList();
+            histotemp.Presion = txt_presion.Text;
+            histotemp.Temperatura = txt_temperatua.Text;
+            histotemp.Fecha_consulta = momentanea[0].Fechaconsulta1;
+            histotemp.Hora_consulta = momentanea[0].Horadeconsulta;
+            histo.Add(histotemp);
+            cantidadtemp.Histo = histo.ToList();
+            cantidad.Add(cantidadtemp);
+
+            if (momentanea[0].Existpaciente==0)
+            {
+                Pacientes pacientestemp = new Pacientes();
+                pacientestemp.Nit_Paciente1 = txt_nitmed.Text;
+                pacientestemp.Nombre = txt_nombre.Text;
+                pacientestemp.Apellido = txt_apellido.Text;
+                pacientestemp.Direccion = txt_apellido.Text;
+                pacientestemp.Fecha_nacimiento1 = calfechanaci.SelectedDate;
+                pacientestemp.Telefono = txt_telefono.Text;
+                pacientes.Add(pacientestemp);
+            }
+            if (momentanea[0].Existhistorial==0)
+            {
+                Historial historialtemp = new Historial();
+                historialtemp.Nit_paciente = txt_nitmed.Text;
+                historialtemp.Cantidad = cantidad.ToList(); ;
+                historial.Add(historialtemp);
+            }
+            else
+            {
+                historial[momentanea[0].Posihis].Cantidad.Add(cantidadtemp);
+            }
+            Guardarhistorial();
+            txt_nitmed.Text = "";
+            txt_nombre1.Text = "";
+            txt_apellido1.Text = "";
+            txt_direccion1.Text = "";
+            txt_telefono1.Text = "";
+            txt_temperatua.Text = "";
+            txt_presion.Text = "";
+            txt_diagnostico.Text = "";
+            txt_receta.Text = "";
+            txt_proximavisita.Text = "";
+            txt_consulta.Text = "";
+        }
+
+        protected void btn_guardarreceta_Click1(object sender, EventArgs e)
+        {
+            int indice = gridtratamiento.SelectedIndex;
+            Tratamiento tratamientotemp = new Tratamiento();
+            tratamientotemp.Receta = medicamentos[indice].Ingrediente_generico;
+            tratamientotemp.Instrucciones1 = txt_receta.Text;
+            tratamiento.Add(tratamientotemp);
+            txt_receta.Text = "";
+        }
+
+        protected void txt_apellido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Gridviewsintomas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_buscarhistorial_Click(object sender, EventArgs e)
+        {
+            for(int x = 0; x < historial.Count; x++)
+            {
+
+            }
         }
     }
 }

@@ -23,14 +23,22 @@ namespace Proyecto_final
     public class Histo
     {
         string diagnostico;
-        DateTime proxima_visita;
+        string proxima_visita;
         string costo_consulta;
+        DateTime fecha_consulta;
+        string hora_consulta;
+        string temperatura;
+        string presion;
         List<Tratamiento> tratamiento = new List<Tratamiento>();
         List<Sintomas> sintomas = new List<Sintomas>();
 
         public string Diagnostico { get => diagnostico; set => diagnostico = value; }
-        public DateTime Proxima_visita { get => proxima_visita; set => proxima_visita = value; }
+        public string Proxima_visita { get => proxima_visita; set => proxima_visita = value; }
         public string Costo_consulta { get => costo_consulta; set => costo_consulta = value; }
+        public DateTime Fecha_consulta { get => fecha_consulta; set => fecha_consulta = value; }
+        public string Hora_consulta { get => hora_consulta; set => hora_consulta = value; }
+        public string Temperatura { get => temperatura; set => temperatura = value; }
+        public string Presion { get => presion; set => presion = value; }
         public List<Tratamiento> Tratamiento { get => tratamiento; set => tratamiento = value; }
         public List<Sintomas> Sintomas { get => sintomas; set => sintomas = value; }
         public Histo()
@@ -39,27 +47,30 @@ namespace Proyecto_final
             Sintomas = new List<Sintomas>();
         }
     }
+    public class Cantidad
+    {
+        List<Histo> histo = new List<Histo>();
 
+        public List<Histo> Histo { get => histo; set => histo = value; }
+        
+        public Cantidad()
+        {
+            Histo = new List<Histo>();
+        }
+    }
     public class Historial
     {
         string nit_paciente;
-        DateTime fecha_consulta;
-        string hora_consulta;
-        string temperatura;
-        string presion;
+        
 
-        List<Histo> histo = new List<Histo>();
+        List<Cantidad> cantidad = new List<Cantidad>();
 
         public string Nit_paciente { get => nit_paciente; set => nit_paciente = value; }
-        public DateTime Fecha_consulta { get => fecha_consulta; set => fecha_consulta = value; }
-        public string Hora_consulta { get => hora_consulta; set => hora_consulta = value; }
-        public string Temperatura { get => temperatura; set => temperatura = value; }
-        public string Presion { get => presion; set => presion = value; }
-        public List<Histo> Histo { get => histo; set => histo = value; }
+        public List<Cantidad> Cantidad { get => cantidad; set => cantidad = value; }
 
         public Historial()
         {
-            Histo = new List<Histo>();
+            Cantidad = new List<Cantidad>();
         }
     }
 }
