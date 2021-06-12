@@ -52,7 +52,6 @@ namespace Proyecto_final
         List<Histo> histo = new List<Histo>();
 
         public List<Histo> Histo { get => histo; set => histo = value; }
-        
         public Cantidad()
         {
             Histo = new List<Histo>();

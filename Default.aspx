@@ -10,7 +10,7 @@
                     <asp:Label ID="Label29" runat="server" BorderStyle="None" Font-Size="X-Large" Text="Ingrese a un modulo"></asp:Label>
                     <br />
                     <asp:Button ID="btn_administrativo" runat="server" OnClick="btn_administrativo_Click" Text="Modulo administrativo" />
-                    <asp:Button ID="btn_medico" runat="server" OnClick="btn_medico_Click" Text="Modulo medico" />
+                    <asp:Button ID="btn_medico" runat="server" OnClick="btn_medico_Click" Text="Modulo medico" Width="203px" />
                 </asp:Panel>
                 <br />
                 <asp:Panel ID="Panel2" runat="server" style="margin-right: 0px">
@@ -59,8 +59,6 @@
                     <br />
                     <asp:Label ID="Label11" runat="server" Text="Telefono"></asp:Label>
                     <asp:TextBox ID="txt_telefono" runat="server"></asp:TextBox>
-                    <br />
-                    <asp:Button ID="btn_guardar_newusuario" runat="server" OnClick="btn_guardar_newusuario_Click" Text="Guardar nuevo" />
                     <br />
                     <asp:Panel ID="Panel6" runat="server">
                         <br />
@@ -218,12 +216,32 @@
                     <asp:Label ID="Label49" runat="server" Font-Size="X-Large" ForeColor="Red" Text="Buscar historial"></asp:Label>
                     <br />
                     <asp:Label ID="Label48" runat="server" Text="Buscar paciente"></asp:Label>
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_buscarhistorial" runat="server"></asp:TextBox>
                     <asp:Button ID="btn_buscarhistorial" runat="server" OnClick="btn_buscarhistorial_Click" Text="Buscar" />
                     <br />
-                    <asp:GridView ID="GridView1" runat="server">
+                    <asp:Label ID="Label50" runat="server" Text="Cantidad de historiales:  "></asp:Label>
+                    <asp:TextBox ID="txt_histocant" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:GridView ID="gridmuestrahistorial" runat="server">
                     </asp:GridView>
                 </asp:Panel>
+                <br />
+                <br />
+                <asp:Panel ID="Panel10" runat="server">
+                    <br />
+                    <asp:Label ID="Label51" runat="server" Font-Size="X-Large" ForeColor="Red" Text="Reporte de pacientes "></asp:Label>
+                    <br />
+                    <asp:Label ID="Label52" runat="server" Text="Cantidad de citas canceladas"></asp:Label>
+                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:Label ID="Label53" runat="server" Text="Cantidad de citas asistidas"></asp:Label>
+                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    <br />
+                    <br />
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                    <br />
+                </asp:Panel>
+                <br />
                 <br />
             </asp:Panel>
         </div>

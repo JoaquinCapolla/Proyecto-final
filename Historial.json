@@ -1,1 +1,137 @@
-[{"Nit_paciente":"1234","Cantidad":[{"Histo":[{"Diagnostico":"el paciente tiene gripe","Proxima_visita":"4 dias","Costo_consulta":"150","Fecha_consulta":"2021-06-04T00:00:00","Hora_consulta":"7:30pm","Temperatura":"37","Presion":"110/100","Tratamiento":[{"Receta":"Antigrip","Instrucciones1":"tomar a cada 6 horas"}],"Sintomas":[{"Codigosintoma":"2","Sintoma":"Fiebre"},{"Codigosintoma":"3","Sintoma":"Flemas"},{"Codigosintoma":"6","Sintoma":"Flujo nasal"}]}]},{"Histo":[{"Diagnostico":"el paciente tiene dolor en su cuerpo","Proxima_visita":"3 dias","Costo_consulta":"150","Fecha_consulta":"2021-06-04T00:00:00","Hora_consulta":"7:30pm","Temperatura":"38","Presion":"120/100","Tratamiento":[{"Receta":"Panadol","Instrucciones1":"tomar cada 12 horas"}],"Sintomas":[{"Codigosintoma":"1","Sintoma":"Dolor de huesos"},{"Codigosintoma":"2","Sintoma":"Fiebre"},{"Codigosintoma":"3","Sintoma":"Flemas"}]}]}]}]
+[
+  {
+    "Nit_paciente": "1234",
+    "Cantidad": [
+      {
+        "Histo": [
+          {
+            "Diagnostico": "el paciente tiene gripe",
+            "Proxima_visita": "4 dias",
+            "Costo_consulta": "150",
+            "Fecha_consulta": "2021-06-04T00:00:00",
+            "Hora_consulta": "7:30pm",
+            "Temperatura": "37",
+            "Presion": "110/100",
+            "Tratamiento": [
+              {
+                "Receta": "Antigrip",
+                "Instrucciones1": "tomar a cada 6 horas"
+              }
+            ],
+            "Sintomas": [
+              {
+                "Codigosintoma": "2",
+                "Sintoma": "Fiebre"
+              },
+              {
+                "Codigosintoma": "3",
+                "Sintoma": "Flemas"
+              },
+              {
+                "Codigosintoma": "6",
+                "Sintoma": "Flujo nasal"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Histo": [
+          {
+            "Diagnostico": "el paciente tiene dolor en su cuerpo",
+            "Proxima_visita": "3 dias",
+            "Costo_consulta": "150",
+            "Fecha_consulta": "2021-06-04T00:00:00",
+            "Hora_consulta": "7:30pm",
+            "Temperatura": "38",
+            "Presion": "120/100",
+            "Tratamiento": [
+              {
+                "Receta": "Panadol",
+                "Instrucciones1": "tomar cada 12 horas"
+              }
+            ],
+            "Sintomas": [
+              {
+                "Codigosintoma": "1",
+                "Sintoma": "Dolor de huesos"
+              },
+              {
+                "Codigosintoma": "2",
+                "Sintoma": "Fiebre"
+              },
+              {
+                "Codigosintoma": "3",
+                "Sintoma": "Flemas"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Nit_paciente": "3456",
+    "Cantidad": [
+      {
+        "Histo": [
+          {
+            "Diagnostico": "el paciente presenta un leve dolor de cuerpo",
+            "Proxima_visita": "7 dias",
+            "Costo_consulta": "150",
+            "Fecha_consulta": "2021-06-06T00:00:00",
+            "Hora_consulta": "7:30pm",
+            "Temperatura": "37",
+            "Presion": "110/100",
+            "Tratamiento": [
+              {
+                "Receta": "Panadol",
+                "Instrucciones1": "tomar a cada 12 horas"
+              }
+            ],
+            "Sintomas": [
+              {
+                "Codigosintoma": "1",
+                "Sintoma": "Dolor de huesos"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Nit_paciente": "4567",
+    "Cantidad": [
+      {
+        "Histo": [
+          {
+            "Diagnostico": "El paciente presenta covid",
+            "Proxima_visita": "4 dias",
+            "Costo_consulta": "250",
+            "Fecha_consulta": "2021-06-12T00:00:00",
+            "Hora_consulta": "3:30 pm",
+            "Temperatura": "40",
+            "Presion": "130/110",
+            "Tratamiento": [
+              {
+                "Receta": "Antigrip",
+                "Instrucciones1": "tomar a cada 6 horas"
+              }
+            ],
+            "Sintomas": [
+              {
+                "Codigosintoma": "2",
+                "Sintoma": "Fiebre"
+              },
+              {
+                "Codigosintoma": "4",
+                "Sintoma": "Tos"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

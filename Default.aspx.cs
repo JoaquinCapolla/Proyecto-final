@@ -227,6 +227,7 @@ namespace Proyecto_final
             Panel4.Visible = false;
             Panel7.Visible = false;
             Panel8.Visible = false;
+            Panel9.Visible = false;
             Cargaragenda();
             Cargarcitas();
             Cargarhistorial();
@@ -299,7 +300,7 @@ namespace Proyecto_final
             int his = 0;
             for (int x = 0; x < historial.Count; x++)
             {
-                if (pacientes[momentanea[0].Posi].Nit_Paciente1.CompareTo(historial[x].Nit_paciente) == 0)
+                if (agenda[momentanea[0].Posi].Nit_paciente.CompareTo(historial[x].Nit_paciente) == 0)
                 {
                     his++;
                     momentanea[0].Posihis = x;
@@ -314,7 +315,7 @@ namespace Proyecto_final
             else
             {
                 Panel6.Visible = true;
-                Gridviewhistorial.DataSource = historial[momentanea[0].Posihis].Cantidad[0].Histo;
+                Gridviewhistorial.DataSource = historial[momentanea.Count].Cantidad[0].Histo;
                 Gridviewhistorial.DataBind();
 
             }
@@ -359,6 +360,7 @@ namespace Proyecto_final
             Panel2.Visible = false;
             Panel7.Visible = true;
             Panel8.Visible = true;
+            Panel9.Visible = true;
         }
 
         protected void btn_medico_Click(object sender, EventArgs e)
@@ -366,6 +368,9 @@ namespace Proyecto_final
             Panel2.Visible = true;
             Panel3.Visible = true;
             Panel4.Visible = false;
+            Panel7.Visible = false;
+            Panel8.Visible = false;
+            Panel9.Visible = false;
         }
 
         protected void btn_guardarpaciente_Click(object sender, EventArgs e)
@@ -405,7 +410,7 @@ namespace Proyecto_final
         protected void Gridviewhistorial_SelectedIndexChanged(object sender, EventArgs e)
         {
             int ind = Gridviewhistorial.SelectedIndex;
-            Gridviewsintomas.DataSource = historial[momentanea[0].Posihis].Cantidad[ind];
+            Gridviewsintomas.DataSource = historial[momentanea[0].Posihis].Cantidad[ind].Histo;
             Gridviewsintomas.DataBind();
         }
 
@@ -562,6 +567,7 @@ namespace Proyecto_final
                 pacientestemp.Fecha_nacimiento1 = calfechanaci.SelectedDate;
                 pacientestemp.Telefono = txt_telefono.Text;
                 pacientes.Add(pacientestemp);
+                Guardarpacientes();
             }
             if (momentanea[0].Existhistorial==0)
             {
@@ -612,7 +618,32 @@ namespace Proyecto_final
         {
             for(int x = 0; x < historial.Count; x++)
             {
+                if(txt_buscarhistorial.Text.CompareTo(historial[x].Nit_paciente) == 0)
+                {
+                    gridmuestrahistorial.DataSource = historial[x].Cantidad[Int32.Parse(txt_histocant.Text)].Histo;
+                    gridmuestrahistorial.DataBind();
+                }
+            }
+        }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            int j = 0;
+            int k = 0;
+            for(int x = 0; x < citas.Count; x++)
+            {
+                int a = citas[x].Asistencia;
+
+                if (a == 0)
+                {
+                    j++;
+                }
+                if (a == 1)
+                {
+                    k++;
+                }
+                TextBox1.Text = "" + j;
+                TextBox2.Text = "" + k;
             }
         }
     }
